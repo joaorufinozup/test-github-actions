@@ -17,7 +17,7 @@ jobs:
     
     steps:
       - name: Setup Staging
-        if: contains('refs/heads/staging', github.ref)
+        if: contains(github.ref, 'staging')
         run: echo ${{github.ref}}
       - name: Echo github.ref
         run: echo 'Não está no contexto staging'
