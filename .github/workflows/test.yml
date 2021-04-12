@@ -18,7 +18,14 @@ jobs:
     steps:
       - name: Setup Staging
         if: contains(github.ref, 'staging')
-        run: echo ${{github.ref}}
+        run: RITCHIE_AWS_REGION=github.ref
       - name: Echo github.ref
         run: echo 'Não está no contexto staging'
+        
+  get_env_var:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Get env var
+        run: echo $RITCHIE_AWS_REGION
     
