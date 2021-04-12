@@ -14,7 +14,7 @@ jobs:
   set_env_vars:
     name: Setting environment variables
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Setup Staging
         if: ${{ github.ref == 'refs/heads/staging.*' }}
