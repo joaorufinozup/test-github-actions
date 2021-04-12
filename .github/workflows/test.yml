@@ -1,17 +1,23 @@
-name: Test CI
+name: Build
 
 on:
   push:
     branches:
       - staging.*
-      
+  workflow_dispatch:
+  
 env:
   DOCKER_IMAGE_PORTAL: ritchie-portal
-  
+  RITCHIE_AWS_REGION: sa-east-1
+
 jobs:
-  test:
-    name: Test job
+  set_env_vars:
+    name: Setting environment variables
     runs-on: ubuntu-latest
+
     steps:
-      - name: Echo env var
-        run: echo $DOCKER_IMAGE_PORTAL
+      - name: Setup Staging
+        if: ${{ github.ref == 'refs/heads/staging.*' }}
+        run: echo ${{github.ref}}
+      - name: Echo github.ref
+        run: echo ${{github.ref}}
