@@ -14,10 +14,11 @@ jobs:
   set_env_vars:
     name: Setting environment variables
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Setup Staging
-        if: ${{ github.ref == 'refs/heads/staging.*' }}
+        if: contains('refs/heads/staging', github.ref)
         run: echo ${{github.ref}}
       - name: Echo github.ref
-        run: echo ${{github.ref}}
+        run: echo 'Não está no contexto staging'
+    
