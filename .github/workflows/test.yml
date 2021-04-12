@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Setup Staging
         if: contains(github.ref, 'staging')
-        run: ${{ env.RITCHIE_AWS_REGION=github.ref }}
+        run: RITCHIE_AWS_REGION=github.ref
       - name: Echo github.ref
         run: echo 'Não está no contexto staging'
         
