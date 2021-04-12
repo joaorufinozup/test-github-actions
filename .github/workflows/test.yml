@@ -1,0 +1,17 @@
+name: Test CI
+
+on:
+  push:
+    branches:
+      - staging.*
+      
+env:
+  DOCKER_IMAGE_PORTAL: ritchie-portal
+  
+jobs:
+  test:
+    name: Test job
+    runs-on: ubuntu-lastest
+    steps:
+      - name: Echo env var
+        run: echo $DOCKER_IMAGE_PORTAL
